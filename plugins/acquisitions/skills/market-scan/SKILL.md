@@ -21,7 +21,8 @@ sits where it does.
 ## With no account
 
 Explain what makes a zip good for wholesaling, and what to look for. Offer to
-add the InvestorBase API key, from Account, then Integrations, as the
+add the InvestorBase API key, from
+https://www.investorbase.com/account?tab=integrations, as the
 `INVESTORBASE_API_KEY` environment variable, to read the market data.
 
 ## MCP tools

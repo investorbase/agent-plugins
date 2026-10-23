@@ -26,9 +26,15 @@ codex plugin add dispo@investorbase
 ## API key
 
 The plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`
-with your InvestorBase API key. Copy it from **Account**, then **Integrations**,
-in InvestorBase. Every app reads it from the `INVESTORBASE_API_KEY` environment
-variable.
+with your InvestorBase API key. Every app reads it from the
+`INVESTORBASE_API_KEY` environment variable.
+
+To get the key:
+
+1. Sign in to InvestorBase, then open
+   <https://www.investorbase.com/account?tab=integrations>.
+2. Under **API Key**, select **Generate API Key** if you have no key yet.
+3. Select the copy button next to the key.
 
 In the Claude app, open the environment selector. Click the gear icon on your
 local environment, or create one with **New environment**. Select
