@@ -18,7 +18,6 @@ plugins/<area>/
   LICENSE                         proprietary, one per plugin
   README.md                       what the plugin does, how to sign in
 .github/workflows/validate.yml    runs scripts/lint.sh on every PR
-.github/workflows/close-outside-prs.yml  closes a PR from outside the team
 .github/CODEOWNERS                engineers own every file, admins own .github/
 scripts/lint.sh                   the one check: manifests, versions, invocation, no em dash
 scripts/bump-plugin-version.sh    bumps the patch version of a touched plugin, both manifests

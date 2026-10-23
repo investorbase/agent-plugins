@@ -6,6 +6,7 @@
   "version": "0.1.1",
   "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
   "homepage": "https://investorbase.com",
+  "supportUrl": "mailto:support@investorbase.com",
   "privacyPolicyUrl": "https://investorbase.com/privacy",
   "termsOfServiceUrl": "https://investorbase.com/terms",
   "icon": "./assets/logo.svg",
