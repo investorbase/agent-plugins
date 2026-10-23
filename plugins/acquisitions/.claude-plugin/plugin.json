@@ -3,7 +3,7 @@
   "name": "acquisitions",
   "displayName": "InvestorBase Acquisitions",
   "description": "Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's acquisitions training. Signs in to the InvestorBase MCP.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
   "homepage": "https://investorbase.com",
   "supportUrl": "mailto:support@investorbase.com",
