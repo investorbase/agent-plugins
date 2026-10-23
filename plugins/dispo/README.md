@@ -23,10 +23,23 @@ codex plugin marketplace add investorbase/agent-plugins
 codex plugin add dispo@investorbase
 ```
 
-## Sign in
+## API key
 
-The plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`.
-The first call opens a sign-in at investorbase.com. With no account, the skills
-still explain how a pro works, but they cannot search buyers or read deals.
+The plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`
+with your InvestorBase API key. Copy it from **Account**, then **Integrations**,
+in InvestorBase.
+
+In Claude Code, the plugin asks for the key when you enable it, and keeps it
+in your keychain. To change it, run `/plugin`, open the plugin, then pick
+**Configure options**.
+
+In Codex, set the key in your shell before you start Codex:
+
+```
+export INVESTORBASE_API_KEY=<your key>
+```
+
+With no key, the skills still explain how a pro works, but they cannot search
+buyers or read deals.
 
 Support: support@investorbase.com

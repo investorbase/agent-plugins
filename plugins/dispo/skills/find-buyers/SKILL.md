@@ -26,8 +26,9 @@ Then hand the pool to buyer-outreach.
 
 ## With no account
 
-Explain how a pro builds the pool, and what to look for in a buyer. Offer the
-sign-in when the user wants the search run.
+Explain how a pro builds the pool, and what to look for in a buyer. Offer to
+add the InvestorBase API key, from Account, then Integrations, when the user
+wants the search run.
 
 ## MCP tools
 

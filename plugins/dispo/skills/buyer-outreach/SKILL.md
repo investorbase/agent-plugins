@@ -33,7 +33,8 @@ first outreach day until offers are due. Help live, mid-call.
 ## With no account
 
 Write the script, the texts and the objection answers from the deal the user
-describes. Offer the sign-in to read the deal and the buyer history.
+describes. Offer to add the InvestorBase API key, from Account, then
+Integrations, to read the deal and the buyer history.
 
 ## MCP tools
 
