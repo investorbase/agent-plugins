@@ -19,8 +19,9 @@ first outreach day until offers are due. Help live, mid-call.
 3. Every urgency line must be true for this deal. Never invent an offer or
    demand. Never share an exact offer. Never tell the top bidder that someone
    is higher.
-4. Bulk texting needs consent and carrier checks. Coach calls to fitted
-   buyers, one at a time. Never coach a blast.
+4. Never write blast copy, not even for an opted-in list. Bulk texting
+   needs consent and carrier checks. Coach calls to fitted buyers, one at
+   a time.
 
 ## Before you spend anything
 
