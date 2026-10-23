@@ -12,13 +12,5 @@
   "icon": "./assets/logo.svg",
   "repository": "https://github.com/investorbase/agent-plugins",
   "license": "LicenseRef-InvestorBase-Proprietary",
-  "keywords": ["investorbase", "dispo", "wholesaling", "real estate", "buyers"],
-  "userConfig": {
-    "api_key": {
-      "type": "string",
-      "title": "InvestorBase API key",
-      "description": "Your key from Account, then Integrations, in InvestorBase. Leave it empty to use the skills without your data.",
-      "sensitive": true
-    }
-  }
+  "keywords": ["investorbase", "dispo", "wholesaling", "real estate", "buyers"]
 }

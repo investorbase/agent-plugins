@@ -10,14 +10,14 @@ Code and Codex:
 In Claude Code:
 
 ```
-/plugin marketplace add investorbase/agent-plugins
+/plugin marketplace add https://github.com/investorbase/agent-plugins
 /plugin install acquisitions@investorbase
 ```
 
 In Codex:
 
 ```
-codex plugin marketplace add investorbase/agent-plugins
+codex plugin marketplace add https://github.com/investorbase/agent-plugins
 codex plugin add acquisitions@investorbase
 ```
 
@@ -25,13 +25,20 @@ codex plugin add acquisitions@investorbase
 
 The plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`
 with your InvestorBase API key. Copy it from **Account**, then **Integrations**,
-in InvestorBase.
+in InvestorBase. Every app reads it from the `INVESTORBASE_API_KEY` environment
+variable.
 
-In Claude Code, the plugin asks for the key when you enable it, and keeps it
-in your keychain. To change it, run `/plugin`, open the plugin, then pick
-**Configure options**.
+In the Claude app, open the environment selector. Click the gear icon on your
+local environment, or create one with **New environment**. Select
+**Environment variables**, add this line, select **Done**, then **Save**:
 
-In Codex, set the key in your shell before you start Codex:
+```
+INVESTORBASE_API_KEY=<your key>
+```
+
+Then start a new session from that environment.
+
+In Claude Code or Codex, set it in your shell before you start them:
 
 ```
 export INVESTORBASE_API_KEY=<your key>
