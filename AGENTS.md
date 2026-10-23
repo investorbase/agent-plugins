@@ -19,6 +19,7 @@ plugins/<area>/
   README.md                       what the plugin does, how to sign in
 .github/workflows/validate.yml    runs scripts/lint.sh on every PR
 .github/CODEOWNERS                engineers own every file, admins own .github/
+.github/rulesets/*.json           the rulesets to create when the repo goes public
 scripts/lint.sh                   the one check: manifests, versions, invocation, no em dash
 scripts/bump-plugin-version.sh    bumps the patch version of a touched plugin, both manifests
 scripts/githooks/pre-commit       lint, then bump
