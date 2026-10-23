@@ -41,7 +41,7 @@ for skill in plugins/*/skills/*/; do
   [ "$user_md" = "$user_yaml" ] || err "$skill: SKILL.md and openai.yaml disagree on invocation"
 done
 
-dashes="$(grep -rnI --exclude-dir=.git --exclude=lint.sh -e $'\xe2\x80\x94' -e $'\xe2\x80\x93' . || true)"
+dashes="$(git grep -nI --untracked -e $'\xe2\x80\x94' -e $'\xe2\x80\x93' -- . ':!scripts/lint.sh' || true)"
 [ -z "$dashes" ] || { echo "$dashes" >&2; err "em dash or en dash found"; }
 
 if [ -n "${LINT_BASE:-}" ]; then
