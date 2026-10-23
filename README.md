@@ -33,12 +33,25 @@ Then add **dispo** or **acquisitions**.
 | [dispo](plugins/dispo) | Sell a deal: find the buyers, build the call sheet. | `find-buyers`, `buyer-outreach` |
 | [acquisitions](plugins/acquisitions) | Buy in the right place: rank the zips of a market. | `market-scan` |
 
-## Sign in
+## API key
 
-Each plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`.
-The first call opens a sign-in at investorbase.com. With no account, the
-skills still explain how a pro works. Signed in, Claude searches buyers, reads
-deals and scans markets. Every write to your account asks you first.
+Each plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`
+with your InvestorBase API key. Copy it from **Account**, then **Integrations**,
+in InvestorBase.
+
+In Claude Code, the plugin asks for the key when you enable it, and keeps it
+in your keychain. To change it, run `/plugin`, open the plugin, then pick
+**Configure options**.
+
+In Codex, set the key in your shell before you start Codex:
+
+```
+export INVESTORBASE_API_KEY=<your key>
+```
+
+With no key, the skills still explain how a pro works. With a key, Claude
+searches buyers, reads deals and scans markets. Every write to your account
+asks you first.
 
 ## Updates
 

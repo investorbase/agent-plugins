@@ -2,8 +2,8 @@
   "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
   "name": "acquisitions",
   "displayName": "InvestorBase Acquisitions",
-  "description": "Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's acquisitions training. Signs in to the InvestorBase MCP.",
-  "version": "0.1.2",
+  "description": "Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's acquisitions training. Connects to the InvestorBase MCP with your API key.",
+  "version": "0.1.3",
   "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
   "homepage": "https://investorbase.com",
   "supportUrl": "mailto:support@investorbase.com",
@@ -12,5 +12,13 @@
   "icon": "./assets/logo.svg",
   "repository": "https://github.com/investorbase/agent-plugins",
   "license": "LicenseRef-InvestorBase-Proprietary",
-  "keywords": ["investorbase", "acquisitions", "wholesaling", "real estate", "market"]
+  "keywords": ["investorbase", "acquisitions", "wholesaling", "real estate", "market"],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "InvestorBase API key",
+      "description": "Your key from Account, then Integrations, in InvestorBase. Leave it empty to use the skills without your data.",
+      "sensitive": true
+    }
+  }
 }
