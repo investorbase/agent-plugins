@@ -9,7 +9,7 @@ an account.
 In Claude Code:
 
 ```
-/plugin marketplace add investorbase/agent-plugins
+/plugin marketplace add https://github.com/investorbase/agent-plugins
 /plugin install dispo@investorbase
 /plugin install acquisitions@investorbase
 ```
@@ -17,14 +17,15 @@ In Claude Code:
 In Codex:
 
 ```
-codex plugin marketplace add investorbase/agent-plugins
+codex plugin marketplace add https://github.com/investorbase/agent-plugins
 codex plugin add dispo@investorbase
 codex plugin add acquisitions@investorbase
 ```
 
 In the Claude app or Cowork: open **Customize**, then **Plugins**. Pick
-**Add**, then **Add marketplace**, and enter `investorbase/agent-plugins`.
-Then add **dispo** or **acquisitions**.
+**Add**, then **Add marketplace**, and enter
+`https://github.com/investorbase/agent-plugins`. Then add **dispo** or
+**acquisitions**.
 
 ## Plugins
 
@@ -33,12 +34,38 @@ Then add **dispo** or **acquisitions**.
 | [dispo](plugins/dispo) | Sell a deal: find the buyers, build the call sheet. | `find-buyers`, `buyer-outreach` |
 | [acquisitions](plugins/acquisitions) | Buy in the right place: rank the zips of a market. | `market-scan` |
 
-## Sign in
+## API key
 
-Each plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`.
-The first call opens a sign-in at investorbase.com. With no account, the
-skills still explain how a pro works. Signed in, Claude searches buyers, reads
-deals and scans markets. Every write to your account asks you first.
+Each plugin connects to the InvestorBase MCP at `https://api.investorbase.com/mcp`
+with your InvestorBase API key. Every app reads it from the
+`INVESTORBASE_API_KEY` environment variable.
+
+To get the key:
+
+1. Sign in to InvestorBase, then open
+   <https://www.investorbase.com/account?tab=integrations>.
+2. Under **API Key**, select **Generate API Key** if you have no key yet.
+3. Select the copy button next to the key.
+
+In the Claude app, open the environment selector. Click the gear icon on your
+local environment, or create one with **New environment**. Select
+**Environment variables**, add this line, select **Done**, then **Save**:
+
+```
+INVESTORBASE_API_KEY=<your key>
+```
+
+Then start a new session from that environment.
+
+In Claude Code or Codex, set it in your shell before you start them:
+
+```
+export INVESTORBASE_API_KEY=<your key>
+```
+
+With no key, the skills still explain how a pro works. With a key, Claude
+searches buyers, reads deals and scans markets. Every write to your account
+asks you first.
 
 ## Updates
 
