@@ -1,0 +1,4 @@
+interface:
+  display_name: "Find Buyers"
+  short_description: "Find buyers whose buy box fits a deal"
+  default_prompt: "Find buyers for this deal"

@@ -1,0 +1,29 @@
+{
+  "name": "acquisitions",
+  "description": "Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's acquisitions training. Signs in to the InvestorBase MCP.",
+  "version": "0.1.0",
+  "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
+  "homepage": "https://investorbase.com",
+  "repository": "https://github.com/investorbase/agent-plugins",
+  "license": "LicenseRef-InvestorBase-Proprietary",
+  "keywords": ["investorbase", "acquisitions", "wholesaling", "real estate", "market"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "InvestorBase Acquisitions",
+    "shortDescription": "Scan a market and rank its zips",
+    "longDescription": "Pick where to buy the way an InvestorBase pro does. Scan a market and rank its zips by investor activity, the flipper and landlord mix, prices and percent of ARV. Sign in to InvestorBase to read market data.",
+    "developerName": "InvestorBase",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "websiteURL": "https://investorbase.com",
+    "privacyPolicyURL": "https://investorbase.com/privacy",
+    "termsOfServiceURL": "https://investorbase.com/terms",
+    "defaultPrompt": [
+      "Which Charleston zips are best for wholesaling?",
+      "Compare investor activity in these three zips"
+    ],
+    "brandColor": "#0569a0",
+    "logo": "./assets/logo.svg"
+  }
+}

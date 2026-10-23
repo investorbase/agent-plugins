@@ -1,0 +1,4 @@
+interface:
+  display_name: "Buyer Outreach"
+  short_description: "Build the call sheet and work the buyers"
+  default_prompt: "Build my call sheet for today"

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "investorbase",
+  "description": "InvestorBase plugins for Claude: one per area. Each one teaches Claude how a pro works a deal, and connects to the InvestorBase MCP.",
+  "owner": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
+  "plugins": [
+    {
+      "name": "dispo",
+      "description": "Sell a deal like a pro: find the buyers and build the call sheet. Taught from InvestorBase's dispo training.",
+      "source": "./plugins/dispo",
+      "author": { "name": "InvestorBase" }
+    },
+    {
+      "name": "acquisitions",
+      "description": "Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's acquisitions training.",
+      "source": "./plugins/acquisitions",
+      "author": { "name": "InvestorBase" }
+    }
+  ]
+}

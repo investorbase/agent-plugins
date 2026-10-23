@@ -1,0 +1,15 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "dispo",
+  "displayName": "InvestorBase Dispo",
+  "description": "Sell a deal like a pro: find the buyers and build the call sheet. Taught from InvestorBase's dispo training. Signs in to the InvestorBase MCP.",
+  "version": "0.1.0",
+  "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
+  "homepage": "https://investorbase.com",
+  "privacyPolicyUrl": "https://investorbase.com/privacy",
+  "termsOfServiceUrl": "https://investorbase.com/terms",
+  "icon": "./assets/logo.svg",
+  "repository": "https://github.com/investorbase/agent-plugins",
+  "license": "LicenseRef-InvestorBase-Proprietary",
+  "keywords": ["investorbase", "dispo", "wholesaling", "real estate", "buyers"]
+}

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Installed once with: git config core.hooksPath scripts/githooks
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+"$root/scripts/lint.sh"
+"$root/scripts/bump-plugin-version.sh"

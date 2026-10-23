@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "investorbase": {
+      "type": "http",
+      "url": "https://api.investorbase.com/mcp"
+    }
+  }
+}

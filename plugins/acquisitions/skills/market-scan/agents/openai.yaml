@@ -1,0 +1,4 @@
+interface:
+  display_name: "Market Scan"
+  short_description: "Rank the zips of a market for wholesaling"
+  default_prompt: "Which zips in this market are best for wholesaling?"
