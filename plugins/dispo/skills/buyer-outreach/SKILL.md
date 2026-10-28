@@ -33,10 +33,7 @@ first outreach day until offers are due. Help live, mid-call.
 ## With no account
 
 Write the script, the texts and the objection answers from the deal the user
-describes. Offer to add the InvestorBase API key, from
-https://www.investorbase.com/account?tab=integrations, as the
-`INVESTORBASE_API_KEY` environment variable, to read the deal and the buyer
-history.
+describes. Offer the sign-in to read the deal and the buyer history.
 
 ## MCP tools
 

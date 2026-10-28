@@ -2,9 +2,7 @@
   "mcpServers": {
     "investorbase": {
       "type": "http",
-      "url": "https://api.investorbase.com/mcp",
-      "headers": { "x-api-key": "${INVESTORBASE_API_KEY:-}" },
-      "env_http_headers": { "x-api-key": "INVESTORBASE_API_KEY" }
+      "url": "https://api.investorbase.com/mcp"
     }
   }
 }
