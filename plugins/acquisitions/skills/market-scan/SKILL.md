@@ -46,10 +46,21 @@ When a deal lands in a top zip and the dispo plugin is installed, load its
 
 ### 2. Pull the numbers
 
-- For each zip: `resolve_address` with the zip as `search_string` for its center,
-  then `get_market_summary` at that center with `lookback_months` 24,
+- For each zip, find a center where people live. `resolve_address` matches
+  street addresses only: a bare zip or a town name returns nothing. Search a
+  full street address in the zip's populated core, such as the town hall or
+  the post office, and take the coordinates of the result in that zip. When
+  nothing resolves, use the zip's approximate center and say so.
+- Run `get_market_summary` at that center with `lookback_months` 24,
   `metrics_radius_mi` 2 and the property type. Keep the same settings for
   every zip, so the ranking compares like with like.
+- A zip with a town that comes back with almost no flips or rentals within
+  1 mile likely missed the town, in woods, water or a preserve. Re-center it
+  once and say so.
+- Pace the calls. The limit is 20 requests a minute, shared by every tool, and
+  a zip costs two calls, so a scan of more than 9 zips needs a pause. Each
+  result says how many requests are left this minute. When the count runs
+  low, wait for the next minute before the next zip.
 - Read per zip: flips and rentals within 1, 2, 5 and 10 miles; the flipper
   price band and average; the flipper percent of ARV band and average; the
   landlord price band; the landlord aggressive, moderate and conservative
