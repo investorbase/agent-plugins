@@ -1,8 +1,7 @@
 # InvestorBase plugins
 
-Skills that teach Claude and Codex how an InvestorBase pro works a deal. One
-plugin per area. The skills are free. The InvestorBase data behind them needs
-an account.
+Skills that teach Claude and Codex how an InvestorBase pro works a deal. The
+skills are free. The InvestorBase data behind them needs an account.
 
 ## Install
 
@@ -10,29 +9,25 @@ In Claude Code:
 
 ```
 /plugin marketplace add https://github.com/investorbase/agent-plugins
-/plugin install dispo@investorbase
-/plugin install acquisitions@investorbase
+/plugin install investorbase@investorbase
 ```
 
 In Codex:
 
 ```
 codex plugin marketplace add https://github.com/investorbase/agent-plugins
-codex plugin add dispo@investorbase
-codex plugin add acquisitions@investorbase
+codex plugin add investorbase@investorbase
 ```
 
 In the Claude app or Cowork: open **Customize**, then **Plugins**. Pick
 **Add**, then **Add marketplace**, and enter
-`https://github.com/investorbase/agent-plugins`. Then add **dispo** or
-**acquisitions**.
+`https://github.com/investorbase/agent-plugins`. Then add **investorbase**.
 
 ## Plugins
 
 | Plugin | What it does | Skills |
 | --- | --- | --- |
-| [dispo](plugins/dispo) | Sell a deal: find the buyers, build the call sheet. | `find-buyers`, `buyer-outreach` |
-| [acquisitions](plugins/acquisitions) | Buy in the right place: rank the zips of a market. | `market-scan` |
+| [investorbase](plugins/investorbase) | Sell a deal: find the buyers, build the call sheet. Buy in the right place: rank the zips of a market. | `find-buyers`, `buyer-outreach`, `market-scan` |
 
 ## Sign in
 
@@ -45,7 +40,7 @@ deals and scans markets. Every write to your account asks you first.
 
 In Claude Code, auto-update is off for a new marketplace. Run `/plugin`, open
 **Marketplaces**, pick **investorbase**, then **Enable auto-update**. Or run
-`claude plugin update dispo@investorbase` when you want the latest.
+`claude plugin update investorbase@investorbase` when you want the latest.
 
 In the Claude app, pick **Check for updates**, or turn on **Sync automatically**.
 

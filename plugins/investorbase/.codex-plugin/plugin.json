@@ -1,0 +1,30 @@
+{
+  "name": "investorbase",
+  "description": "Sell a deal like a pro: find the buyers and build the call sheet. Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's dispo and acquisitions training. Signs in to the InvestorBase MCP.",
+  "version": "0.2.0",
+  "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
+  "homepage": "https://investorbase.com",
+  "repository": "https://github.com/investorbase/agent-plugins",
+  "license": "LicenseRef-InvestorBase-Proprietary",
+  "keywords": ["investorbase", "dispo", "acquisitions", "wholesaling", "real estate", "buyers", "market"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "InvestorBase",
+    "shortDescription": "Find buyers, build the call sheet, rank a market's zips",
+    "longDescription": "Sell a deal the way an InvestorBase pro does. Find the buyers whose buy box fits the deal, grow the pool to target, then build the call sheet: the call order, an opener per buyer, voicemail and text drafts, and the answers to common objections. Pick where to buy the way an InvestorBase pro does. Scan a market and rank its zips by investor activity, the flipper and landlord mix, prices and percent of ARV. Sign in to InvestorBase to search buyers, read your deals and read market data.",
+    "developerName": "InvestorBase",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://investorbase.com",
+    "privacyPolicyURL": "https://investorbase.com/privacy",
+    "termsOfServiceURL": "https://investorbase.com/terms",
+    "defaultPrompt": [
+      "Find buyers for this deal",
+      "Build my call sheet for today",
+      "Which Charleston zips are best for wholesaling?"
+    ],
+    "brandColor": "#0569a0",
+    "logo": "./assets/logo.svg"
+  }
+}

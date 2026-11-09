@@ -37,7 +37,7 @@ sign-in when the user wants the search run.
 ## Hand-off
 
 When the pool reaches target, load the `buyer-outreach` skill. In Claude
-Code, call the Skill tool with "dispo:buyer-outreach".
+Code, call the Skill tool with "investorbase:buyer-outreach".
 
 ## Playbook
 

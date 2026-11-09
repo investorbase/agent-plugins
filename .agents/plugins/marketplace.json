@@ -4,16 +4,9 @@
   "interface": { "displayName": "InvestorBase plugins" },
   "plugins": [
     {
-      "name": "dispo",
-      "description": "Sell a deal like a pro: find the buyers and build the call sheet. Taught from InvestorBase's dispo training.",
-      "source": { "source": "local", "path": "./plugins/dispo" },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
-      "category": "Productivity"
-    },
-    {
-      "name": "acquisitions",
-      "description": "Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's acquisitions training.",
-      "source": { "source": "local", "path": "./plugins/acquisitions" },
+      "name": "investorbase",
+      "description": "Sell a deal like a pro: find the buyers and build the call sheet. Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's dispo and acquisitions training.",
+      "source": { "source": "local", "path": "./plugins/investorbase" },
       "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
       "category": "Productivity"
     }
