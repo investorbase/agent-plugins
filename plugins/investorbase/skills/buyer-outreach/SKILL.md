@@ -43,7 +43,7 @@ describes. Offer the sign-in to read the deal and the buyer history.
 ## Hand-off
 
 When the pool is short, load the `find-buyers` skill. In Claude Code, call
-the Skill tool with "dispo:find-buyers".
+the Skill tool with "investorbase:find-buyers".
 
 ## Playbook
 

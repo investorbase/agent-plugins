@@ -1,14 +1,14 @@
 # agent-plugins
 
 The public InvestorBase marketplace for Claude Code, the Claude app and Codex.
-One plugin per area. Both tools read the same `SKILL.md` files.
+One plugin, `investorbase`. Both tools read the same `SKILL.md` files.
 
 ## Map
 
 ```
 .claude-plugin/marketplace.json   Claude Code catalog: name investorbase, one entry per plugin
 .agents/plugins/marketplace.json  Codex catalog: same name, same plugins, local paths
-plugins/<area>/
+plugins/investorbase/
   .claude-plugin/plugin.json      name, version, author, license, keywords
   .codex-plugin/plugin.json       same name and version, plus the interface block Codex shows
   .mcp.json                       the InvestorBase MCP at https://api.investorbase.com/mcp

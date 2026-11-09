@@ -30,9 +30,8 @@ sign-in to read the market data.
 
 ## Hand-off
 
-When a deal lands in a top zip and the dispo plugin is installed, load its
-`find-buyers` skill. In Claude Code, call the Skill tool with
-"dispo:find-buyers".
+When a deal lands in a top zip, load the `find-buyers` skill. In Claude
+Code, call the Skill tool with "investorbase:find-buyers".
 
 ## Playbook
 
