@@ -1,6 +1,6 @@
 # InvestorBase for Claude
 
-[![Watch: Connect Claude to InvestorBase in under 30 seconds](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F2224689139-341b48d581cfc3efd0fcb9edcecba5fbfd4e6673dc50cb54c05e50a7ea51c752-d_1280%3Fregion%3Dus&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)](https://vimeo.com/1245538603)
+https://github.com/user-attachments/assets/36906491-7028-4eef-8d18-e78ae4a85d36
 
 Ask Claude to find buyers for your deal, write your call sheet, or pick the best
 zips in a market. Claude works the deal the way an InvestorBase pro does, with
