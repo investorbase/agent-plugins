@@ -1,0 +1,107 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "investorbase",
+  "version": "1.0.0",
+  "description": "Real estate investor data across the US and your InvestorBase deals, in ChatGPT.",
+  "author": {
+    "name": "InvestorBase",
+    "email": "support@investorbase.com",
+    "url": "https://www.investorbase.com"
+  },
+  "homepage": "https://www.investorbase.com",
+  "keywords": [
+    "real estate",
+    "investors",
+    "cash buyers",
+    "comps",
+    "wholesaling",
+    "CRM"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "InvestorBase",
+        "shortDescription": "Real estate investor data",
+        "longDescription": "InvestorBase connects ChatGPT to your InvestorBase account and its data on real estate investors across the US. Research buyers, properties and markets, and work your deals directly from ChatGPT, while everything stays organized in InvestorBase.",
+        "developerName": "InvestorBase",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://www.investorbase.com",
+        "supportURL": "https://www.investorbase.com/help",
+        "privacyPolicyURL": "https://www.investorbase.com/privacy",
+        "termsOfServiceURL": "https://www.investorbase.com/terms",
+        "defaultPrompt": [
+          "Find cash buyers for my newest deal.",
+          "Summarize the investor market in Charleston, SC.",
+          "Pull retail comps for my newest deal."
+        ],
+        "brandColor": "#0EA5E9",
+        "brandColorDark": "#0EA5E9",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find buyers for a deal in the CRM",
+              "prompt": "Find cash buyers for my newest deal.",
+              "tools_triggered": "list_deals, resolve_address, search_buyers",
+              "expected_behavior": "Finds the newest CRM deal, runs a buyer search on its address and lists the investors buying nearby, nearest first, with their recent purchases and contact details."
+            },
+            {
+              "description": "See recent investor purchases in a market",
+              "prompt": "Which flips and rentals did investors buy near Charleston, SC recently?",
+              "tools_triggered": "resolve_address, search_investor_activity",
+              "expected_behavior": "Resolves Charleston, SC and lists recent flip and rental purchases near it, closest first, each labeled as a flipper or landlord purchase."
+            },
+            {
+              "description": "Summarize an investor market",
+              "prompt": "Summarize the investor market in Charleston, SC.",
+              "tools_triggered": "resolve_address, get_market_summary",
+              "expected_behavior": "Resolves Charleston, SC and reports how many flips and rentals happened within 1, 2, 5 and 10 miles, with price, price per square foot and ARV ranges for flips."
+            },
+            {
+              "description": "Price a property in the CRM",
+              "prompt": "Pull retail and investor comps for my newest deal.",
+              "tools_triggered": "list_deals, resolve_address, get_retail_comps, get_investor_comps",
+              "expected_behavior": "Finds the newest CRM deal and returns comparable retail sales around it and recent investor purchases nearby, so the user can estimate ARV and what an investor would pay."
+            },
+            {
+              "description": "Move a deal with offers to another stage",
+              "prompt": "Which of my deals have offers? Move the one with the highest offer to Buyer(s) Found.",
+              "tools_triggered": "list_deals, get_deal_offers, update_deal",
+              "expected_behavior": "Lists the CRM deals that have offers, names the deal with the highest offer, moves it to the Buyer(s) Found stage after the user confirms, and reports its new stage. The InvestorBase pipeline shows that stage as Marketing unless the user renamed it."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Mortgage rates are outside InvestorBase data",
+              "prompt": "What is the average 30-year mortgage rate right now?"
+            },
+            {
+              "description": "InvestorBase cannot delete deals",
+              "prompt": "Delete all the deals in my CRM."
+            },
+            {
+              "description": "General question unrelated to real estate investing",
+              "prompt": "What's the weather in Charleston today?"
+            }
+          ]
+        },
+        "demo_recording_url": "https://drive.google.com/file/d/1iAqh-cph9e24uO0sz-ZDh0A6CRPDzykq/view?usp=sharing",
+        "commerce": false,
+        "commerce_description": "InvestorBase does not sell products or take payments in ChatGPT."
+      },
+      "publication": {
+        "countries": [
+          "US"
+        ],
+        "release_notes": "First release: buyer search, investor activity, market summaries, retail and investor comps, and your CRM deals and Buyers List."
+      }
+    }
+  }
+}
