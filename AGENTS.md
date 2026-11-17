@@ -25,7 +25,7 @@ plugins/investorbase/
 .github/rulesets/*.json           the rulesets to create when the repo goes public
 scripts/lint.sh                   the one check: manifests, versions, invocation, no em dash
 scripts/bump-plugin-version.sh    bumps the patch version of a touched plugin, all three manifests
-scripts/package-chatgpt.sh        builds dist/investorbase-<version>.zip for ChatGPT
+scripts/package-chatgpt.sh        zips the whole plugin into dist/investorbase-<version>.zip for OpenAI
 scripts/githooks/pre-commit       lint, then bump
 ```
 
@@ -59,5 +59,6 @@ Install the hook once: `git config core.hooksPath scripts/githooks`.
 scripts/package-chatgpt.sh
 ```
 
-It writes `dist/investorbase-<version>.zip` with `mcp.json`, `plugin.json` and
-the two PNG images. That zip is the file ChatGPT takes. Skills stay out.
+It writes `dist/investorbase-<version>.zip` with the whole `plugins/investorbase`
+folder, minus what git ignores. `plugin.json` sits at the root of the zip.
+That zip is the file submitted to OpenAI.

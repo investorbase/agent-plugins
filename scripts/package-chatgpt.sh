@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Build the zip ChatGPT takes: the Agent Plugins manifest, the MCP config and
-# the two images the manifest names. Skills stay out, as in the first upload.
+# Build the zip submitted to OpenAI: the whole plugin folder, minus what git ignores.
 set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
@@ -10,5 +9,5 @@ out="$PWD/dist/investorbase-$version.zip"
 
 mkdir -p dist
 rm -f "$out"
-(cd "$dir" && zip -X -q "$out" mcp.json plugin.json assets/icon.png assets/logo.png)
+(cd "$dir" && git ls-files --cached --others --exclude-standard | zip -X -q "$out" -@)
 echo "$out"
