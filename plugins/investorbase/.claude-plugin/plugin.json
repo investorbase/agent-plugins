@@ -3,7 +3,7 @@
   "name": "investorbase",
   "displayName": "InvestorBase",
   "description": "Sell a deal like a pro: find the buyers and build the call sheet. Buy in the right place: scan a market and rank its zips by investor activity. Taught from InvestorBase's dispo and acquisitions training. Signs in to the InvestorBase MCP.",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": { "name": "InvestorBase", "email": "support@investorbase.com", "url": "https://investorbase.com" },
   "homepage": "https://investorbase.com",
   "supportUrl": "mailto:support@investorbase.com",

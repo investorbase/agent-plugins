@@ -12,7 +12,7 @@ git config core.hooksPath scripts/githooks
 ```
 
 The hook runs `scripts/lint.sh` on every commit, then bumps the patch version
-of each plugin the commit touches, in both manifests.
+of each plugin the commit touches, in all three manifests.
 
 ## Add a skill
 

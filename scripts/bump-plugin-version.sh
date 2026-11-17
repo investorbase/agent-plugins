@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bump the patch version of each plugin a commit touches, in both manifests.
+# Bump the patch version of each plugin a commit touches, in all three manifests.
 # A customer's update only reinstalls when the version changes, so every
 # commit that ships something gets the next patch. A bump already staged by
 # hand wins, so a minor or major written on purpose is never overridden.
@@ -45,6 +45,7 @@ EOT
 
   set_version "$repo/$rel" "$next" || continue
   set_version "$repo/$dir/.codex-plugin/plugin.json" "$next" || continue
+  set_version "$repo/$dir/plugin.json" "$next" || continue
   echo "bump-plugin-version: ${plugin} ${current} -> ${next}"
 done
 exit 0

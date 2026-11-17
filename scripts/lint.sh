@@ -21,12 +21,16 @@ for dir in plugins/*/; do
   name="$(basename "$dir")"
   claude_manifest="$dir.claude-plugin/plugin.json"
   codex_manifest="$dir.codex-plugin/plugin.json"
+  agent_manifest="${dir}plugin.json"
   [ -f "$codex_manifest" ] || { err "$name: missing .codex-plugin/plugin.json"; continue; }
+  [ -f "$agent_manifest" ] || { err "$name: missing plugin.json"; continue; }
   a="$(version_of "$claude_manifest")"
   b="$(version_of "$codex_manifest")"
-  [ "$a" = "$b" ] || err "$name: versions differ, claude $a, codex $b"
+  c="$(version_of "$agent_manifest")"
+  [ "$a" = "$b" ] && [ "$a" = "$c" ] || err "$name: versions differ, claude $a, codex $b, plugin.json $c"
   grep -q "\"name\": \"$name\"" "$claude_manifest" || err "$name: .claude-plugin/plugin.json name is not $name"
   grep -q "\"name\": \"$name\"" "$codex_manifest" || err "$name: .codex-plugin/plugin.json name is not $name"
+  grep -q "\"name\": \"$name\"" "$agent_manifest" || err "$name: plugin.json name is not $name"
   [ -f "$dir/LICENSE" ] || err "$name: missing LICENSE"
   [ -f "$dir/README.md" ] || err "$name: missing README.md"
 done
