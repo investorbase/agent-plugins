@@ -32,7 +32,8 @@ both. A to B is the seller and the user. B to C is the user and the end buyer.
   market.
 - A landing page in `under_contract` means B to C. An end buyer signed, and
   other buyers can only make a backup offer.
-- Never offer to move a page to `under_contract` because of that phrase.
+- Never offer to move a page to `under_contract` because the user said "I
+  just got it under contract".
 
 ## Before you spend anything
 
