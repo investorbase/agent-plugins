@@ -1,0 +1,100 @@
+{
+  "tools": [
+    {
+      "name": "get_usage",
+      "description": "Returns the current period's usage and limits for your account, and what you used yourself. Checking usage does not use any monthly allowance, but it counts toward the per-minute rate limit. Subscriber keys only.\n\nReturns: Usage for the account and for you.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." }
+        }
+      }
+    },
+    {
+      "name": "list_landing_pages",
+      "description": "Returns your account's landing pages, every user's, newest first, the same ones the app's Landing Pages page lists. Each comes as get_landing_page returns it: price, property facts, description, status, deal owner, photos, attachments and, while Published, the public link. Filter as in the app by part of the address, status, price, city or ZIP code, and deal owner. Reading your own data does not use any monthly allowance.\n\nReturns: One page of landing pages and the total that match. `landing_pages` is empty when nothing matched.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." },
+          "deal_owner_emails": {
+            "anyOf": [{ "type": "array", "maxItems": 50, "items": { "type": "string", "format": "email" } }, { "type": "null" }],
+            "description": "Only landing pages whose deal owner is one of these users of your account."
+          },
+          "locations": {
+            "anyOf": [
+              {
+                "type": "array",
+                "maxItems": 50,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": { "type": "string", "enum": ["city", "zip"] },
+                    "name": { "type": "string", "minLength": 1, "maxLength": 100, "description": "The city name or the ZIP code." },
+                    "state": { "type": "string", "pattern": "^[A-Za-z]{2}$", "description": "Two-letter US state code." }
+                  },
+                  "required": ["type", "name", "state"]
+                }
+              },
+              { "type": "null" }
+            ],
+            "description": "Only landing pages in one of these cities or ZIP codes."
+          },
+          "max_price": { "anyOf": [{ "type": "number", "minimum": 0 }, { "type": "null" }], "description": "Only landing pages with a price of at most this many dollars." },
+          "min_price": { "anyOf": [{ "type": "number", "minimum": 0 }, { "type": "null" }], "description": "Only landing pages with a price of at least this many dollars." },
+          "page": { "anyOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }], "default": 1, "description": "Page to return, starting at 1." },
+          "page_size": { "anyOf": [{ "type": "integer", "minimum": 1, "maximum": 50 }, { "type": "null" }], "default": 10, "description": "Landing pages per page, from 1 to 50." },
+          "search": { "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }], "description": "Matches part of the address, city, ZIP code or title." },
+          "statuses": {
+            "anyOf": [{ "type": "array", "items": { "type": "string", "enum": ["not_posted", "active", "under_contract", "closed", "terminated"] } }, { "type": "null" }],
+            "description": "Only landing pages in one of these statuses. The app shows them as Not Posted, Active, Under Contract, Closed and Terminated; `active` and `under_contract` are Published."
+          }
+        }
+      }
+    },
+    {
+      "name": "get_landing_page",
+      "description": "Returns one of your account's landing pages as the app's edit page shows it: price, property facts, description, status, deal owner, photos and attachments. A Published landing page (status `active` or `under_contract`) comes with the public link to send buyers. Reading your own data does not use any monthly allowance.\n\nReturns: The landing page. `public_link` is null while it is not Published, and `photos` and `attachments` are empty when it has none.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." },
+          "landing_page_id": { "type": "string", "format": "uuid", "description": "The landing page's id, as `list_landing_pages` returns it, or the one in its address in the app: `/landingpages/{id}/edit`." }
+        },
+        "required": ["landing_page_id"]
+      }
+    },
+    {
+      "name": "update_landing_page",
+      "description": "Changes the fields you send on one of your account's landing pages, the same as saving the app's edit form, and keeps the rest as they are. Publish or unpublish it, or mark it Under Contract, Closed or Terminated, with `status`; hand it to a teammate with `deal_owner_email`. The app's checks apply: a landing page missing a required field is not saved, so it cannot be published either. Buyers see the change on its public link right away. Changing your own data does not use any monthly allowance.\n\nReturns: The landing page as saved, the same as get_landing_page returns it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." },
+          "landing_page_id": { "type": "string", "format": "uuid", "description": "The landing page's id, as `list_landing_pages` returns it, or the one in its address in the app: `/landingpages/{id}/edit`." },
+          "changes": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Only the fields to change; the rest keep their values. The landing page that results must have what the app requires before it saves one: address, city, state, ZIP code, price and property type, then beds, baths and square feet, or acreage for land, or unit rows for multifamily.",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["not_posted", "active", "under_contract", "closed", "terminated"],
+                "description": "The app shows them as Not Posted, Active, Under Contract, Closed and Terminated. `active` publishes the landing page, and only a complete one can be saved; `active` and `under_contract` are Published, so buyers can open the public link."
+              },
+              "title": { "type": ["string", "null"], "description": "The headline buyers see at the top of the landing page." },
+              "description_rich": { "type": ["string", "null"], "description": "The description buyers read, as HTML." },
+              "starting_price": { "type": ["number", "null"], "description": "The price buyers see, in dollars." },
+              "repair_amount_low": { "type": ["number", "null"], "description": "Low end of the repair cost, in dollars." },
+              "repair_amount_high": { "type": ["number", "null"], "description": "High end of the repair cost, in dollars." },
+              "flip_profit_low": { "type": ["number", "null"], "description": "Low end of the profit from a flip, in dollars." },
+              "flip_profit_high": { "type": ["number", "null"], "description": "High end of the profit from a flip, in dollars." },
+              "deal_owner_email": { "anyOf": [{ "type": "string", "format": "email" }, { "type": "null" }], "description": "Hands the landing page to another user of your account, who buyers then contact: the email of an active admin or dispositions user." }
+            }
+          }
+        },
+        "required": ["landing_page_id", "changes"]
+      }
+    }
+  ]
+}
