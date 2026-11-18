@@ -23,6 +23,18 @@ first outreach day until offers are due. Help live, mid-call.
    needs consent and carrier checks. Coach calls to fitted buyers, one at
    a time.
 
+## Two contracts
+
+A wholesale deal has two contracts, and wholesalers say "under contract" for
+both. A to B is the seller and the user. B to C is the user and the end buyer.
+
+- "I just got it under contract" means A to B. The deal is new and ready to
+  market.
+- A landing page in `under_contract` means B to C. An end buyer signed, and
+  other buyers can only make a backup offer.
+- Never offer to move a page to `under_contract` because the user said "I
+  just got it under contract".
+
 ## Before you spend anything
 
 1. Call `get_usage` first.
@@ -37,8 +49,8 @@ describes. Offer the sign-in to read the deal and the buyer history.
 
 ## MCP tools
 
-`list_deals`, `get_deal`, `get_buyer_history`, `get_buyer_inquiries`,
-`create_buyers_list_buyer`.
+`list_deals`, `get_deal`, `list_landing_pages`, `get_landing_page`,
+`get_buyer_history`, `get_buyer_inquiries`, `create_buyers_list_buyer`.
 
 ## Hand-off
 
