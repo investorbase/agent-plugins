@@ -3,98 +3,22 @@
     {
       "name": "get_usage",
       "description": "Returns the current period's usage and limits for your account, and what you used yourself. Checking usage does not use any monthly allowance, but it counts toward the per-minute rate limit. Subscriber keys only.\n\nReturns: Usage for the account and for you.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." }
-        }
-      }
+      "inputSchema": {"properties": {"context": {"description": "In one sentence, why you are calling this tool: what the user is trying to get done.", "type": "string"}}, "type": "object"}
     },
     {
       "name": "list_landing_pages",
       "description": "Returns your account's landing pages, every user's, newest first, the same ones the app's Landing Pages page lists. Each comes as get_landing_page returns it: price, property facts, description, status, deal owner, photos, attachments and, while Published, the public link. Filter as in the app by part of the address, status, price, city or ZIP code, and deal owner. Reading your own data does not use any monthly allowance.\n\nReturns: One page of landing pages and the total that match. `landing_pages` is empty when nothing matched.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." },
-          "deal_owner_emails": {
-            "anyOf": [{ "type": "array", "maxItems": 50, "items": { "type": "string", "format": "email" } }, { "type": "null" }],
-            "description": "Only landing pages whose deal owner is one of these users of your account."
-          },
-          "locations": {
-            "anyOf": [
-              {
-                "type": "array",
-                "maxItems": 50,
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "type": { "type": "string", "enum": ["city", "zip"] },
-                    "name": { "type": "string", "minLength": 1, "maxLength": 100, "description": "The city name or the ZIP code." },
-                    "state": { "type": "string", "pattern": "^[A-Za-z]{2}$", "description": "Two-letter US state code." }
-                  },
-                  "required": ["type", "name", "state"]
-                }
-              },
-              { "type": "null" }
-            ],
-            "description": "Only landing pages in one of these cities or ZIP codes."
-          },
-          "max_price": { "anyOf": [{ "type": "number", "minimum": 0 }, { "type": "null" }], "description": "Only landing pages with a price of at most this many dollars." },
-          "min_price": { "anyOf": [{ "type": "number", "minimum": 0 }, { "type": "null" }], "description": "Only landing pages with a price of at least this many dollars." },
-          "page": { "anyOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }], "default": 1, "description": "Page to return, starting at 1." },
-          "page_size": { "anyOf": [{ "type": "integer", "minimum": 1, "maximum": 50 }, { "type": "null" }], "default": 10, "description": "Landing pages per page, from 1 to 50." },
-          "search": { "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }], "description": "Matches part of the address, city, ZIP code or title." },
-          "statuses": {
-            "anyOf": [{ "type": "array", "items": { "type": "string", "enum": ["not_posted", "active", "under_contract", "closed", "terminated"] } }, { "type": "null" }],
-            "description": "Only landing pages in one of these statuses. The app shows them as Not Posted, Active, Under Contract, Closed and Terminated; `active` and `under_contract` are Published."
-          }
-        }
-      }
+      "inputSchema": {"properties": {"context": {"description": "In one sentence, why you are calling this tool: what the user is trying to get done.", "type": "string"}, "deal_owner_emails": {"anyOf": [{"items": {"format": "email", "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$", "type": "string"}, "maxItems": 50, "type": "array"}, {"type": "null"}], "description": "Only landing pages whose deal owner is one of these users of your account.", "example": ["dana@example.com"]}, "locations": {"anyOf": [{"items": {"properties": {"name": {"description": "The city name or the ZIP code.", "example": "Charleston", "maxLength": 100, "minLength": 1, "type": "string"}, "state": {"description": "Two-letter US state code.", "example": "SC", "pattern": "^[A-Za-z]{2}$", "type": "string"}, "type": {"enum": ["city", "zip"], "type": "string"}}, "required": ["type", "name", "state"], "type": "object"}, "maxItems": 50, "type": "array"}, {"type": "null"}], "description": "Only landing pages in one of these cities or ZIP codes."}, "max_price": {"anyOf": [{"minimum": 0, "type": "number"}, {"type": "null"}], "description": "Only landing pages with a price of at most this many dollars.", "example": 250000}, "min_price": {"anyOf": [{"minimum": 0, "type": "number"}, {"type": "null"}], "description": "Only landing pages with a price of at least this many dollars.", "example": 100000}, "page": {"anyOf": [{"maximum": 9007199254740991, "minimum": 1, "type": "integer"}, {"type": "null"}], "default": 1, "description": "Page to return, starting at 1."}, "page_size": {"anyOf": [{"maximum": 50, "minimum": 1, "type": "integer"}, {"type": "null"}], "default": 10, "description": "Landing pages per page, from 1 to 50."}, "search": {"anyOf": [{"maxLength": 200, "type": "string"}, {"type": "null"}], "description": "Matches part of the address, city, ZIP code or title.", "example": "Blossom"}, "statuses": {"anyOf": [{"items": {"enum": ["not_posted", "active", "under_contract", "closed", "terminated"], "type": "string"}, "type": "array"}, {"type": "null"}], "description": "Only landing pages in one of these statuses. The app shows them as Not Posted, Active, Under Contract, Closed and Terminated; `active` and `under_contract` are Published.", "example": ["active"]}}, "type": "object"}
     },
     {
       "name": "get_landing_page",
       "description": "Returns one of your account's landing pages as the app's edit page shows it: price, property facts, description, status, deal owner, photos and attachments. A Published landing page (status `active` or `under_contract`) comes with the public link to send buyers. Reading your own data does not use any monthly allowance.\n\nReturns: The landing page. `public_link` is null while it is not Published, and `photos` and `attachments` are empty when it has none.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." },
-          "landing_page_id": { "type": "string", "format": "uuid", "description": "The landing page's id, as `list_landing_pages` returns it, or the one in its address in the app: `/landingpages/{id}/edit`." }
-        },
-        "required": ["landing_page_id"]
-      }
+      "inputSchema": {"properties": {"context": {"description": "In one sentence, why you are calling this tool: what the user is trying to get done.", "type": "string"}, "landing_page_id": {"description": "The landing page's id, as `list_landing_pages` returns it, or the one in its address in the app: `/landingpages/{id}/edit`.", "example": "7a1b2c3d-0000-4000-8000-000000000001", "format": "uuid", "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", "type": "string"}}, "required": ["landing_page_id"], "type": "object"}
     },
     {
       "name": "update_landing_page",
       "description": "Changes the fields you send on one of your account's landing pages, the same as saving the app's edit form, and keeps the rest as they are. Publish or unpublish it, or mark it Under Contract, Closed or Terminated, with `status`; hand it to a teammate with `deal_owner_email`. The app's checks apply: a landing page missing a required field is not saved, so it cannot be published either. Buyers see the change on its public link right away. Changing your own data does not use any monthly allowance.\n\nReturns: The landing page as saved, the same as get_landing_page returns it.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "context": { "type": "string", "description": "In one sentence, why you are calling this tool: what the user is trying to get done." },
-          "landing_page_id": { "type": "string", "format": "uuid", "description": "The landing page's id, as `list_landing_pages` returns it, or the one in its address in the app: `/landingpages/{id}/edit`." },
-          "changes": {
-            "type": "object",
-            "additionalProperties": false,
-            "description": "Only the fields to change; the rest keep their values. The landing page that results must have what the app requires before it saves one: address, city, state, ZIP code, price and property type, then beds, baths and square feet, or acreage for land, or unit rows for multifamily.",
-            "properties": {
-              "status": {
-                "type": "string",
-                "enum": ["not_posted", "active", "under_contract", "closed", "terminated"],
-                "description": "The app shows them as Not Posted, Active, Under Contract, Closed and Terminated. `active` publishes the landing page, and only a complete one can be saved; `active` and `under_contract` are Published, so buyers can open the public link."
-              },
-              "title": { "type": ["string", "null"], "description": "The headline buyers see at the top of the landing page." },
-              "description_rich": { "type": ["string", "null"], "description": "The description buyers read, as HTML." },
-              "starting_price": { "type": ["number", "null"], "description": "The price buyers see, in dollars." },
-              "repair_amount_low": { "type": ["number", "null"], "description": "Low end of the repair cost, in dollars." },
-              "repair_amount_high": { "type": ["number", "null"], "description": "High end of the repair cost, in dollars." },
-              "flip_profit_low": { "type": ["number", "null"], "description": "Low end of the profit from a flip, in dollars." },
-              "flip_profit_high": { "type": ["number", "null"], "description": "High end of the profit from a flip, in dollars." },
-              "deal_owner_email": { "anyOf": [{ "type": "string", "format": "email" }, { "type": "null" }], "description": "Hands the landing page to another user of your account, who buyers then contact: the email of an active admin or dispositions user." }
-            }
-          }
-        },
-        "required": ["landing_page_id", "changes"]
-      }
+      "inputSchema": {"properties": {"changes": {"additionalProperties": false, "description": "Only the fields to change; the rest keep their values. The landing page that results must have what the app requires before it saves one: address, city, state, ZIP code, price and property type, then beds, baths and square feet, or acreage for land, or unit rows for multifamily.", "example": {"starting_price": 180000, "status": "active"}, "properties": {"acreage": {"anyOf": [{"multipleOf": 0.001, "type": "number"}, {"type": "null"}], "description": "Lot size in acres, for land, with up to 3 decimals.", "example": 1.25}, "address": {"description": "Street address.", "example": "123 Main St", "type": ["string", "null"]}, "baths": {"description": "Bathrooms.", "example": 2, "type": ["number", "null"]}, "beds": {"description": "Bedrooms.", "example": 3, "type": ["number", "null"]}, "city": {"example": "Charleston", "type": ["string", "null"]}, "components": {"description": "The condition of the roof, HVAC, water heater, electrical, plumbing, foundation and cosmetics, each with its type, condition and age, and whether buyers see it. Send the full list; it replaces the current one.", "items": {"properties": {"age": {"anyOf": [{"maximum": 99, "minimum": 0, "type": "integer"}, {"type": "null"}]}, "age_is_estimate": {"type": "boolean"}, "condition": {"anyOf": [{"enum": ["Great", "Good", "Fair", "Poor", "Unknown"], "type": "string"}, {"type": "null"}]}, "hidden": {"type": "boolean"}, "key": {"enum": ["roof", "hvac", "water_heater", "electrical", "plumbing", "foundation", "cosmetic"], "type": "string"}, "type": {"type": ["string", "null"]}}, "required": ["key", "type", "condition", "age", "age_is_estimate", "hidden"], "type": "object"}, "type": "array"}, "custom_arv_high": {"description": "High end of the after-repair value (ARV) buyers see, in dollars. Set it to replace the estimate the app filled in; null on both ends goes back to it.", "type": ["number", "null"]}, "custom_arv_low": {"description": "Low end of the after-repair value (ARV) buyers see, in dollars. Set it to replace the estimate the app filled in; null on both ends goes back to it.", "type": ["number", "null"]}, "custom_rent_high": {"description": "High end of the monthly rent buyers see, in dollars. Set it to replace the estimate the app filled in; null on both ends goes back to it.", "type": ["number", "null"]}, "custom_rent_low": {"description": "Low end of the monthly rent buyers see, in dollars. Set it to replace the estimate the app filled in; null on both ends goes back to it.", "type": ["number", "null"]}, "deal_owner_email": {"anyOf": [{"format": "email", "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$", "type": "string"}, {"type": "null"}], "description": "Hands the landing page to another user of your account, who buyers then contact: the email of an active admin or dispositions user.", "example": "dana@example.com"}, "description_rich": {"description": "The description buyers read, as HTML.", "example": "<p>Move-in ready.</p>", "type": ["string", "null"]}, "flip_profit_high": {"description": "High end of the profit from a flip, in dollars.", "type": ["number", "null"]}, "flip_profit_low": {"description": "Low end of the profit from a flip, in dollars.", "type": ["number", "null"]}, "hide_exact_location": {"description": "Hides the street address from buyers.", "type": ["boolean", "null"]}, "hide_profit_metrics": {"description": "Hides the repair cost, ARV, rent and flip profit from buyers.", "type": "boolean"}, "latitude": {"description": "Where the map pin sits. Change it with the address.", "type": ["number", "null"]}, "longitude": {"description": "Where the map pin sits. Change it with the address.", "type": ["number", "null"]}, "mfr_units": {"description": "The units of a multifamily property, one row per layout: how many units, their beds and baths and, optionally, square feet and average monthly rent. Send the full list; it replaces the current one.", "items": {"properties": {"avg_rent": {"anyOf": [{"maximum": 1000000, "minimum": 0, "type": "number"}, {"type": "null"}]}, "baths": {"minimum": 1, "type": "number"}, "beds": {"maximum": 9007199254740991, "minimum": 1, "type": "integer"}, "quantity": {"maximum": 2147483647, "minimum": 1, "type": "integer"}, "sqft": {"anyOf": [{"maximum": 1000000, "minimum": 0, "type": "integer"}, {"type": "null"}]}}, "required": ["quantity", "beds", "baths"], "type": "object"}, "type": "array"}, "pricing_label": {"anyOf": [{"maxLength": 25, "minLength": 1, "type": "string"}, {"type": "null"}], "description": "The label next to the price, up to 25 characters.", "example": "Starting Price"}, "property_type": {"anyOf": [{"enum": ["SFR", "MFR", "LAND", "CONDO", "MOBILE"], "type": "string"}, {"type": "null"}], "description": "SFR (single family), MFR (multifamily), LAND, CONDO or MOBILE (mobile home). Land needs `acreage`, multifamily needs `mfr_units`, the rest need `beds`, `baths` and `sqft`.", "example": "SFR"}, "repair_amount_high": {"description": "High end of the repair cost, in dollars.", "type": ["number", "null"]}, "repair_amount_low": {"description": "Low end of the repair cost, in dollars.", "type": ["number", "null"]}, "show_street_view": {"description": "Shows the street-level photo of the property with its photos.", "type": "boolean"}, "sqft": {"description": "Living area in square feet.", "example": 1400, "type": ["number", "null"]}, "starting_price": {"description": "The price buyers see, in dollars.", "example": 180000, "type": ["number", "null"]}, "state": {"description": "Two-letter US state code.", "example": "SC", "type": ["string", "null"]}, "status": {"description": "The app shows them as Not Posted, Active, Under Contract, Closed and Terminated. `active` publishes the landing page, and only a complete one can be saved; `active` and `under_contract` are Published, so buyers can open the public link.", "enum": ["not_posted", "active", "under_contract", "closed", "terminated"], "example": "active", "type": "string"}, "title": {"description": "The headline buyers see at the top of the landing page.", "example": "Renovated ranch near downtown", "type": ["string", "null"]}, "video_urls": {"anyOf": [{"items": {"additionalProperties": {}, "properties": {"title": {"type": ["string", "null"]}, "url": {"type": ["string", "null"]}}, "type": "object"}, "maxItems": 10, "type": "array"}, {"type": "null"}], "description": "Videos buyers can watch, as YouTube, Vimeo or Google Drive links, up to 10. Send the full list; it replaces the current one."}, "year_built": {"anyOf": [{"maximum": 9007199254740991, "minimum": -9007199254740991, "type": "integer"}, {"type": "null"}], "description": "The year the property was built.", "example": 1985}, "zip": {"description": "ZIP code.", "example": "29407", "type": ["string", "null"]}}, "type": "object"}, "context": {"description": "In one sentence, why you are calling this tool: what the user is trying to get done.", "type": "string"}, "landing_page_id": {"description": "The landing page's id, as `list_landing_pages` returns it, or the one in its address in the app: `/landingpages/{id}/edit`.", "example": "7a1b2c3d-0000-4000-8000-000000000001", "format": "uuid", "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", "type": "string"}}, "required": ["landing_page_id", "changes"], "type": "object"}
     }
   ]
 }

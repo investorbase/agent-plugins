@@ -2,5 +2,5 @@
 type: llm
 ---
 
-PASS if the reply works the newest landing page, 412 Oak Hollow Dr, which is Active, and leaves its status as it is.
-FAIL if the reply offers to set the page to Under Contract, says an end buyer has the deal, or works the Under Contract page at 27 Pine Ridge Rd.
+PASS if the reply picks 412 Oak Hollow Dr, the newest landing page, which is Active, as the deal to send Dale.
+FAIL if the reply picks 27 Pine Ridge Rd or no page, offers to set 412 Oak Hollow Dr to Under Contract, or says an end buyer signed on 412 Oak Hollow Dr.
