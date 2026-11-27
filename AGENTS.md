@@ -12,8 +12,8 @@ plugins/investorbase/
   .claude-plugin/plugin.json      name, version, author, license, keywords
   .codex-plugin/plugin.json       same name and version, plus the interface block Codex shows
   plugin.json                     Agent Plugins manifest for ChatGPT: same name and version, plus the review block
-  .mcp.json                       the InvestorBase MCP at https://api.investorbase.com/mcp, OAuth sign-in
-  mcp.json                        the same file as .mcp.json, under the name ChatGPT reads
+  .mcp.json                       the InvestorBase MCP at https://api.investorbase.com/mcp, for Claude Code and Codex
+  mcp.json                        the same MCP for ChatGPT, with the OpenAI OAuth block. Never copy it into .mcp.json: the Claude directory refuses `extensions`
   skills/<skill>/SKILL.md         one skill, read by both tools
   skills/<skill>/agents/openai.yaml  the Codex picker name and description
   assets/logo.svg                 the mark shown next to the plugin
